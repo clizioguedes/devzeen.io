@@ -3,12 +3,13 @@ export interface Project {
   title: string;
   description: string;
   longDescription?: string;
-  image: string;
+  image?: string;
   technologies: string[];
   category: string[];
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  borderColor?: string;
 }
 
 export interface Experience {
