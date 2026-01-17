@@ -81,11 +81,11 @@ export function Header() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-              <SheetHeader>
-                <SheetTitle>{siteConfig.name}</SheetTitle>
+            <SheetContent side="right" className="w-[85vw] max-w-sm">
+              <SheetHeader className="mb-8">
+                <SheetTitle className="text-xl font-bold">{siteConfig.name}</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4 mt-8">
+              <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <ScrollLink
                     key={link.href}
@@ -95,8 +95,8 @@ export function Header() {
                     offset={-80}
                     duration={500}
                     onClick={handleNavClick}
-                    className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer py-2 min-h-[44px] flex items-center"
-                    activeClass="text-foreground"
+                    className="text-base font-medium text-foreground hover:bg-accent rounded-lg px-4 py-3 transition-colors cursor-pointer"
+                    activeClass="bg-accent"
                   >
                     {link.name}
                   </ScrollLink>
