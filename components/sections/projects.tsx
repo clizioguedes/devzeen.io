@@ -77,14 +77,6 @@ export function Projects() {
                       asChild
                       className="flex-1 min-h-11"
                     >
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github className="h-4 w-4 mr-2" />
-                        Código
-                      </a>
                     </Button>
                   )}
                   {project.liveUrl && (
