@@ -98,9 +98,6 @@ export function Footer() {
           <p className="text-center sm:text-left">
             © {currentYear} {siteConfig.name}. Todos os direitos reservados.
           </p>
-          <p className="flex items-center gap-1 text-center sm:text-right">
-            Feito com <Heart className="h-4 w-4 fill-red-500 text-red-500" /> usando Next.js
-          </p>
         </div>
       </div>
     </footer>
