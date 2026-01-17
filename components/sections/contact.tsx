@@ -38,25 +38,26 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Construct mailto URL
-      const subject = encodeURIComponent(`Contato de ${data.name} - Portfolio`);
-      const body = encodeURIComponent(
-        `Nome: ${data.name}\nE-mail: ${data.email}\n\nMensagem:\n${data.message}`
-      );
-      const mailtoUrl = `mailto:${siteConfig.author.email}?subject=${subject}&body=${body}`;
-
-      // Open email client
-      window.location.href = mailtoUrl;
-
-      // Show success message
-      toast.success("Cliente de e-mail aberto!", {
-        description: "Complete o envio da mensagem no seu cliente de e-mail.",
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
 
-      // Reset form
+      if (!response.ok) {
+        throw new Error("Falha ao enviar mensagem");
+      }
+
+      toast.success("Mensagem enviada com sucesso!", {
+        description: "Entrarei em contato em breve.",
+      });
+
       form.reset();
-    } catch {
-      toast.error("Erro ao abrir cliente de e-mail", {
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Erro ao enviar mensagem", {
         description: "Por favor, tente novamente ou entre em contato diretamente.",
       });
     } finally {

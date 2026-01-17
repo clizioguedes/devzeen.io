@@ -7,9 +7,9 @@ export const siteConfig = {
   url: "https://devzeen.io",
   author: {
     name: "Clizio Guedes",
-    email: "contato@devzeen.io",
+    email: "clizioguedes@devzeen.io",
     bio: "Desenvolvedor Full Stack apaixonado por criar experiências digitais incríveis. Especializado em React, Next.js e tecnologias modernas de web development.",
-    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop",
+    avatar: "https://avatars.githubusercontent.com/u/8258057?s=400&u=5aa24d91db3997bc4ca0cf9f2ed2cd26930984b9&v=4",
   },
 };
 
