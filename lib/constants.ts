@@ -103,7 +103,7 @@ export const projects: Project[] = [
 export const clients: Client[] = [
   {
     id: "1",
-    name: "GRL Ogtrans",
+    name: "GRLOG",
     logo: "https://www.grlogtrans.com.br/img/logo_png_v2.png",
     website: "https://www.grlogtrans.com.br",
     description: "Empresa de logística e transportes",
