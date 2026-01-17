@@ -53,16 +53,12 @@ export const skills: Skill[] = [
   { name: "TypeScript", category: "frontend" },
   { name: "JavaScript", category: "frontend" },
   { name: "Tailwind", category: "frontend" },
-  { name: "HTML5", category: "frontend" },
-  { name: "CSS3", category: "frontend" },
   { name: "Node.js", category: "backend" },
+  { name: "Java", category: "backend" },
   { name: "Express", category: "backend" },
   { name: "PostgreSQL", category: "backend" },
-  { name: "MongoDB", category: "backend" },
-  { name: "Prisma", category: "backend" },
   { name: "Git", category: "tools" },
   { name: "Docker", category: "tools" },
-  { name: "Figma", category: "tools" },
 ];
 
 export const projects: Project[] = [
