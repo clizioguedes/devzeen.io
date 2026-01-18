@@ -3,10 +3,9 @@
 import * as React from "react";
 import { motion, useAnimationControls, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll";
 
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { siteConfig, socialLinks } from "@/lib/constants";
 import { FormattedMessage, useIntl } from "react-intl";
 import { GithubIcon } from "@/components/icons/github";
@@ -23,6 +22,7 @@ export function Hero() {
   const intl = useIntl();
   const reduceMotion = useReducedMotion();
   const floatControls = useAnimationControls();
+  const [avatarError, setAvatarError] = React.useState(false);
 
   React.useEffect(() => {
     if (!reduceMotion) {
@@ -131,21 +131,22 @@ export function Hero() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-3 md:gap-4"
             >
-              <ScrollLink to="projects" smooth={true} offset={-80} duration={500}>
-                <Button size="lg" className="w-full sm:w-auto min-h-11 gap-2">
+              <Button size="lg" className="w-full sm:w-auto min-h-11 gap-2" asChild>
+                <a href="#projects">
                   <FormattedMessage id="hero.cta.projects" defaultMessage="Ver Projetos" />
                   <ArrowRight className="h-4 w-4" />
-                </Button>
-              </ScrollLink>
-              <ScrollLink to="contact" smooth={true} offset={-80} duration={500}>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto min-h-11 gap-2"
-                >
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto min-h-11 gap-2"
+                asChild
+              >
+                <a href="#contact">
                   <FormattedMessage id="hero.cta.contact" defaultMessage="Entre em Contato" />
-                </Button>
-              </ScrollLink>
+                </a>
+              </Button>
             </motion.div>
 
             {/* Social Links */}
@@ -184,15 +185,24 @@ export function Hero() {
         >
           <div className="relative">
             <div className="absolute inset-0 bg-linear-to-r from-primary to-primary/60 rounded-full blur-2xl opacity-20 animate-pulse" />
-            <Avatar className="h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80 border-4 border-border relative">
-              <AvatarImage
-                src={siteConfig.author.avatar}
-                alt={intl.formatMessage({ id: "author.name" })}
-              />
-              <AvatarFallback className="text-4xl md:text-5xl lg:text-6xl">
-                {intl.formatMessage({ id: "author.name" }).substring(0, 2).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
+            <div className="relative h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80 border-4 border-border rounded-full overflow-hidden bg-muted flex items-center justify-center">
+              {!avatarError && (
+                <Image
+                  src={siteConfig.author.avatar}
+                  alt={intl.formatMessage({ id: "author.name" })}
+                  fill
+                  sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
+                  className="object-cover"
+                  priority
+                  onError={() => setAvatarError(true)}
+                />
+              )}
+              {avatarError && (
+                <span className="text-4xl md:text-5xl lg:text-6xl font-semibold text-muted-foreground">
+                  {intl.formatMessage({ id: "author.name" }).substring(0, 2).toUpperCase()}
+                </span>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>

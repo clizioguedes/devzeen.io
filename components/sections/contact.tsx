@@ -206,9 +206,9 @@ export function Contact() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="font-semibold mb-1">
+                <h3 className="font-semibold mb-1">
                   <FormattedMessage id="contact.info.email" defaultMessage="E-mail" />
-                </h4>
+                </h3>
                 <a
                   href={`mailto:${siteConfig.author.email}`}
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -218,9 +218,9 @@ export function Contact() {
               </div>
 
               <div className="pt-4 border-t">
-                <h4 className="font-semibold mb-3">
+                <h3 className="font-semibold mb-3">
                   <FormattedMessage id="contact.info.findMe" defaultMessage="Ou me encontre nas redes sociais" />
-                </h4>
+                </h3>
                 <p className="text-sm text-muted-foreground">
                   <FormattedMessage id="contact.info.follow" defaultMessage="Fique à vontade para me seguir e entrar em contato através das minhas redes sociais. Estou sempre aberto para discutir novos projetos e oportunidades de colaboração." />
                 </p>
@@ -230,9 +230,9 @@ export function Contact() {
 
           <Card className="bg-muted">
             <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">
+              <h3 className="font-semibold mb-2">
                 <FormattedMessage id="contact.info.responseTime.title" defaultMessage="Horário de Resposta" />
-              </h4>
+              </h3>
               <p className="text-sm text-muted-foreground">
                 <FormattedMessage id="contact.info.responseTime.desc" defaultMessage="Geralmente respondo dentro de 24-48 horas durante dias úteis. Para questões urgentes, entre em contato através das redes sociais." />
               </p>

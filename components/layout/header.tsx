@@ -4,7 +4,6 @@ import * as React from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Menu } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -74,18 +73,13 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <ScrollLink
+            <a
               key={link.href}
-              to={link.href}
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-              activeClass="text-foreground"
+              href={`#${link.href}`}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               <FormattedMessage id={`nav.${link.href}`} defaultMessage={link.href} />
-            </ScrollLink>
+            </a>
           ))}
         </nav>
 
@@ -124,19 +118,14 @@ export function Header() {
               </SheetHeader>
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (
-                  <ScrollLink
+                  <a
                     key={link.href}
-                    to={link.href}
-                    spy={true}
-                    smooth={true}
-                    offset={-80}
-                    duration={500}
+                    href={`#${link.href}`}
                     onClick={handleNavClick}
-                    className="text-base font-medium text-foreground hover:bg-accent rounded-lg px-4 py-3 transition-colors cursor-pointer"
-                    activeClass="bg-accent"
+                    className="text-base font-medium text-foreground hover:bg-accent rounded-lg px-4 py-3 transition-colors"
                   >
                     <FormattedMessage id={`nav.${link.href}`} defaultMessage={link.href} />
-                  </ScrollLink>
+                  </a>
                 ))}
               </nav>
             </SheetContent>

@@ -3,7 +3,6 @@
 import * as React from "react";
 import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { animateScroll as scroll } from "react-scroll";
 
 import { Button } from "@/components/ui/button";
 
@@ -11,6 +10,7 @@ export function BackToTop() {
   const [isVisible, setIsVisible] = React.useState(false);
 
   React.useEffect(() => {
+    let ticking = false;
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
         setIsVisible(true);
@@ -19,16 +19,23 @@ export function BackToTop() {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          toggleVisibility();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollToTop = () => {
-    scroll.scrollToTop({
-      duration: 500,
-      smooth: true,
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

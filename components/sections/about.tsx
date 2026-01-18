@@ -100,9 +100,9 @@ export function About() {
             {/* Frontend */}
             <div className="rounded-xl border border-border/60 bg-card/40 p-4">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-sm font-semibold">
+                <h3 className="text-sm font-semibold">
                   <FormattedMessage id="about.category.frontend" defaultMessage="Frontend" />
-                </h4>
+                </h3>
                 <span className="text-xs text-muted-foreground">{skillsByCategory.frontend.length}</span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -117,9 +117,9 @@ export function About() {
             {/* Backend */}
             <div className="rounded-xl border border-border/60 bg-card/40 p-4">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-sm font-semibold">
+                <h3 className="text-sm font-semibold">
                   <FormattedMessage id="about.category.backend" defaultMessage="Backend" />
-                </h4>
+                </h3>
                 <span className="text-xs text-muted-foreground">{skillsByCategory.backend.length}</span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -134,9 +134,9 @@ export function About() {
             {/* Tools */}
             <div className="rounded-xl border border-border/60 bg-card/40 p-4">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-sm font-semibold">
+                <h3 className="text-sm font-semibold">
                   <FormattedMessage id="about.category.tools" defaultMessage="Ferramentas" />
-                </h4>
+                </h3>
                 <span className="text-xs text-muted-foreground">{skillsByCategory.tools.length}</span>
               </div>
               <div className="flex flex-wrap gap-2">

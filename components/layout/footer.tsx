@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {/* Brand */}
           <div className="space-y-3">
-            <h3 className="text-lg font-bold">{intl.formatMessage({ id: "site.name" }) || "DevZeen"}</h3>
+            <h2 className="text-lg font-bold">{intl.formatMessage({ id: "site.name" }) || "DevZeen"}</h2>
             <p className="text-sm text-muted-foreground max-w-xs">
               {intl.formatMessage({ id: "site.description" }) || "Portfolio profissional de desenvolvimento web"}
             </p>
@@ -36,9 +36,9 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold">
+            <h3 className="text-sm font-semibold">
               <FormattedMessage id="footer.quickLinks" defaultMessage="Links Rápidos" />
-            </h4>
+            </h3>
             <nav className="flex flex-col gap-2">
               <Link
                 href="#hero"
@@ -69,9 +69,9 @@ export function Footer() {
 
           {/* Social Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold">
+            <h3 className="text-sm font-semibold">
               <FormattedMessage id="footer.social" defaultMessage="Redes Sociais" />
-            </h4>
+            </h3>
             <div className="flex gap-2">
               {socialLinks.map((social) => {
                 const Icon =
