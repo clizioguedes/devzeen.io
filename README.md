@@ -1,4 +1,4 @@
-# 🚀 DevZeen.io - Portfolio Profissional
+# 🚀 DevZeen.io
 
 <div align="center">
 
