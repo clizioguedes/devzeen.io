@@ -12,7 +12,7 @@ export function Clients() {
   return (
     <section
       id="clients"
-      className="container max-w-screen-2xl px-4 md:px-8 py-12 md:py-20 bg-muted/30"
+      className="container max-w-screen-2xl py-12 md:py-20 bg-muted/30"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ export function Clients() {
           >
             <Card className="group hover:shadow-lg transition-all h-full">
               <CardContent className="p-6 flex flex-col items-center justify-center gap-4 h-full">
-                <div className="relative w-full aspect-square max-w-[200px] flex items-center justify-center">
+                <div className="relative w-full aspect-square max-w-50 flex items-center justify-center">
                   <Image
                     src={client.logo}
                     alt={client.name}

@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="container max-w-screen-2xl px-4 md:px-8 py-12 md:py-20 lg:py-28"
+      className="container max-w-screen-2xl py-12 md:py-20 lg:py-28"
     >
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         {/* Content */}

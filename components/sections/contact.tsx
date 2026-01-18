@@ -68,7 +68,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="container max-w-screen-2xl px-4 md:px-8 py-12 md:py-20"
+      className="container max-w-screen-2xl py-12 md:py-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
