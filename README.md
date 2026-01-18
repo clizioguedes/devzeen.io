@@ -35,12 +35,14 @@ Portfolio profissional moderno e responsivo desenvolvido com as tecnologias mais
 ## 🛠️ Stack Tecnológica
 
 ### **Core**
+
 - **[Next.js 16](https://nextjs.org/)** - Framework React com SSR e App Router
 - **[React 19](https://react.dev/)** - Biblioteca JavaScript para interfaces
 - **[TypeScript 5](https://www.typescriptlang.org/)** - Type safety e melhor DX
 - **[Tailwind CSS v4](https://tailwindcss.com/)** - Framework CSS utility-first
 
 ### **UI/UX**
+
 - **[shadcn/ui](https://ui.shadcn.com/)** - Componentes reutilizáveis e acessíveis
 - **[Radix UI](https://www.radix-ui.com/)** - Primitivos UI headless
 - **[Framer Motion](https://www.framer.com/motion/)** - Animações e transições
@@ -48,11 +50,13 @@ Portfolio profissional moderno e responsivo desenvolvido com as tecnologias mais
 - **[next-themes](https://github.com/pacocoursey/next-themes)** - Gerenciamento de temas
 
 ### **Formulários & Validação**
+
 - **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários performático
 - **[Zod](https://zod.dev/)** - Schema validation TypeScript-first
 - **[Resend](https://resend.com/)** - API de envio de emails transacionais
 
 ### **Ferramentas**
+
 - **[pnpm](https://pnpm.io/)** - Gerenciador de pacotes rápido e eficiente
 - **[ESLint](https://eslint.org/)** - Linting e qualidade de código
 - **[Docker](https://www.docker.com/)** - Containerização para deployment
@@ -69,32 +73,38 @@ Portfolio profissional moderno e responsivo desenvolvido com as tecnologias mais
 ### **Instalação**
 
 1. Clone o repositório
+
 ```bash
 git clone https://github.com/clizioguedes/devzeen.io.git
 cd devzeen.io
 ```
 
-2. Habilite o pnpm (se necessário)
+1. Habilite o pnpm (se necessário)
+
 ```bash
 corepack enable
 ```
 
-3. Instale as dependências
+1. Instale as dependências
+
 ```bash
 pnpm install
 ```
 
-4. Configure as variáveis de ambiente
+1. Configure as variáveis de ambiente
+
 ```bash
 cp .env.example .env.local
 ```
 
 Adicione suas credenciais no `.env.local`:
+
 ```env
 RESEND_API_KEY=your_resend_api_key_here
 ```
 
-5. Execute o servidor de desenvolvimento
+1. Execute o servidor de desenvolvimento
+
 ```bash
 pnpm dev
 ```
@@ -151,27 +161,35 @@ devzeen.io/
 ## 🎨 Seções do Portfolio
 
 ### **1. Hero**
+
 Apresentação inicial com foto de perfil, descrição profissional e links para redes sociais (GitHub, LinkedIn).
 
 ### **2. Projects**
+
 Showcase dos principais projetos desenvolvidos com:
+
 - Descrição detalhada
 - Stack tecnológica
 - Links para GitHub e demo
 - Categorização por tipo
 
 ### **3. About**
+
 Biografia profissional detalhando:
+
 - Formação acadêmica
 - Anos de experiência
 - Segmentos de atuação
 - Habilidades técnicas organizadas por categoria (Frontend, Backend, Tools)
 
 ### **4. Clients**
+
 Galeria de clientes atendidos com logos e descrições.
 
 ### **5. Contact**
+
 Formulário funcional de contato com:
+
 - Validação em tempo real
 - Feedback visual
 - Integração com Resend API
@@ -193,39 +211,6 @@ docker run -p 3000:3000 devzeen-portfolio
 
 ---
 
-## 🌐 Deploy
-
-### **Vercel (Recomendado)**
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/clizioguedes/devzeen.io)
-
-1. Faça push para o GitHub
-2. Importe o projeto no [Vercel](https://vercel.com)
-3. Configure a variável de ambiente `RESEND_API_KEY`
-4. Deploy automático!
-
-### **Outras Plataformas**
-
-O projeto é compatível com qualquer plataforma que suporte Next.js:
-- Netlify
-- Railway
-- Render
-- AWS Amplify
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Sinta-se livre para:
-
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
----
-
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
@@ -239,15 +224,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 - Website: [devzeen.io](https://devzeen.io)
 - GitHub: [@clizioguedes](https://github.com/clizioguedes)
 - LinkedIn: [clizioguedes](https://linkedin.com/in/clizioguedes)
-- Email: clizioguedes@devzeen.io
-
----
-
-## 🙏 Agradecimentos
-
-- [shadcn](https://twitter.com/shadcn) pelos componentes UI incríveis
-- [Vercel](https://vercel.com) pela plataforma de deploy
-- Comunidade Next.js e React pelo suporte
+- Email: <clizioguedes@devzeen.io>
 
 ---
 
