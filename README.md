@@ -13,8 +13,6 @@ Portfolio profissional moderno e responsivo desenvolvido com as tecnologias mais
 
 </div>
 
----
-
 ## 📋 Sobre o Projeto
 
 **DevZeen.io** é um portfolio profissional full-stack que apresenta projetos, habilidades técnicas e experiência profissional de forma elegante e interativa. Construído com Next.js 16, React 19 e Tailwind CSS v4, o projeto demonstra as melhores práticas de desenvolvimento web moderno.
@@ -29,8 +27,6 @@ Portfolio profissional moderno e responsivo desenvolvido com as tecnologias mais
 - **📧 Formulário de Contato**: Integração com Resend API para envio de emails
 - **🎯 Navegação Suave**: Scroll animado entre seções com react-scroll
 - **🔍 SEO Otimizado**: Meta tags e estrutura semântica para melhor indexação
-
----
 
 ## 🛠️ Stack Tecnológica
 
@@ -60,8 +56,6 @@ Portfolio profissional moderno e responsivo desenvolvido com as tecnologias mais
 - **[pnpm](https://pnpm.io/)** - Gerenciador de pacotes rápido e eficiente
 - **[ESLint](https://eslint.org/)** - Linting e qualidade de código
 - **[Docker](https://www.docker.com/)** - Containerização para deployment
-
----
 
 ## 🚀 Começando
 
@@ -111,8 +105,6 @@ pnpm dev
 
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
----
-
 ## 📦 Scripts Disponíveis
 
 ```bash
@@ -121,8 +113,6 @@ pnpm build      # Cria build de produção
 pnpm start      # Inicia servidor de produção
 pnpm lint       # Executa ESLint
 ```
-
----
 
 ## 🏗️ Estrutura do Projeto
 
@@ -155,8 +145,6 @@ devzeen.io/
 ├── components.json       # shadcn/ui config
 └── package.json          # Dependências
 ```
-
----
 
 ## 🎨 Seções do Portfolio
 
@@ -195,8 +183,6 @@ Formulário funcional de contato com:
 - Integração com Resend API
 - Notificações toast
 
----
-
 ## 🐳 Docker
 
 Build e execute com Docker:
@@ -209,13 +195,9 @@ docker build -t devzeen-portfolio .
 docker run -p 3000:3000 devzeen-portfolio
 ```
 
----
-
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
 
 ## 👤 Autor
 
@@ -225,8 +207,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 - GitHub: [@clizioguedes](https://github.com/clizioguedes)
 - LinkedIn: [clizioguedes](https://linkedin.com/in/clizioguedes)
 - Email: <clizioguedes@devzeen.io>
-
-----
 
 <div align="center">
 
