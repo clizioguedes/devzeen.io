@@ -226,7 +226,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 - LinkedIn: [clizioguedes](https://linkedin.com/in/clizioguedes)
 - Email: <clizioguedes@devzeen.io>
 
----
+----
 
 <div align="center">
 
