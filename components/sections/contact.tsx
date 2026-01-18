@@ -21,9 +21,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { contactFormSchema, type ContactFormSchema } from "@/lib/validations";
 import { siteConfig } from "@/lib/constants";
+import { useIntl, FormattedMessage } from "react-intl";
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const intl = useIntl();
 
   const form = useForm<ContactFormSchema>({
     resolver: zodResolver(contactFormSchema),
@@ -50,15 +52,15 @@ export function Contact() {
         throw new Error("Falha ao enviar mensagem");
       }
 
-      toast.success("Mensagem enviada com sucesso!", {
-        description: "Entrarei em contato em breve.",
+      toast.success(intl.formatMessage({ id: "contact.toast.success" }), {
+        description: intl.formatMessage({ id: "contact.toast.successDesc" }),
       });
 
       form.reset();
     } catch (error) {
       console.error("Error sending message:", error);
-      toast.error("Erro ao enviar mensagem", {
-        description: "Por favor, tente novamente ou entre em contato diretamente.",
+      toast.error(intl.formatMessage({ id: "contact.toast.error" }), {
+        description: intl.formatMessage({ id: "contact.toast.errorDesc" }),
       });
     } finally {
       setIsSubmitting(false);
@@ -78,11 +80,10 @@ export function Contact() {
         className="space-y-4 mb-8 md:mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Entre em Contato
+          <FormattedMessage id="contact.title" defaultMessage="Entre em Contato" />
         </h2>
         <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
-          Tem um projeto em mente ou quer conversar? Envie uma mensagem e vamos
-          trabalhar juntos!
+          <FormattedMessage id="contact.description" defaultMessage="Tem um projeto em mente ou quer conversar? Envie uma mensagem e vamos trabalhar juntos!" />
         </p>
       </motion.div>
 
@@ -96,9 +97,11 @@ export function Contact() {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Envie uma Mensagem</CardTitle>
+              <CardTitle>
+                <FormattedMessage id="contact.form.title" defaultMessage="Envie uma Mensagem" />
+              </CardTitle>
               <CardDescription>
-                Preencha o formulário abaixo e entrarei em contato o mais breve possível.
+                <FormattedMessage id="contact.form.description" defaultMessage="Preencha o formulário abaixo e entrarei em contato o mais breve possível." />
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -109,10 +112,12 @@ export function Contact() {
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nome</FormLabel>
+                        <FormLabel>
+                          <FormattedMessage id="contact.form.name" defaultMessage="Nome" />
+                        </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Seu nome completo"
+                            placeholder={intl.formatMessage({ id: "contact.form.placeholder.name" })}
                             {...field}
                             className="min-h-11"
                           />
@@ -127,11 +132,13 @@ export function Contact() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>E-mail</FormLabel>
+                        <FormLabel>
+                          <FormattedMessage id="contact.form.email" defaultMessage="E-mail" />
+                        </FormLabel>
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="seu@email.com"
+                            placeholder={intl.formatMessage({ id: "contact.form.placeholder.email" })}
                             {...field}
                             className="min-h-11"
                           />
@@ -146,10 +153,12 @@ export function Contact() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Mensagem</FormLabel>
+                        <FormLabel>
+                          <FormattedMessage id="contact.form.message" defaultMessage="Mensagem" />
+                        </FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Descreva seu projeto ou mensagem..."
+                            placeholder={intl.formatMessage({ id: "contact.form.placeholder.message" })}
                             className="min-h-30 resize-none"
                             {...field}
                           />
@@ -166,11 +175,11 @@ export function Contact() {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      <>Enviando...</>
+                      <>{intl.formatMessage({ id: "contact.form.sending" })}</>
                     ) : (
                       <>
                         <Send className="h-4 w-4" />
-                        Enviar Mensagem
+                        {intl.formatMessage({ id: "contact.form.send" })}
                       </>
                     )}
                   </Button>
@@ -189,15 +198,17 @@ export function Contact() {
           className="space-y-6"
         >
           <Card>
-            <CardHeader>
+              <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
-                Informações de Contato
+                <FormattedMessage id="contact.info.findMe" defaultMessage="Ou me encontre nas redes sociais" />
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="font-semibold mb-1">E-mail</h4>
+                <h4 className="font-semibold mb-1">
+                  <FormattedMessage id="contact.info.email" defaultMessage="E-mail" />
+                </h4>
                 <a
                   href={`mailto:${siteConfig.author.email}`}
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -207,11 +218,11 @@ export function Contact() {
               </div>
 
               <div className="pt-4 border-t">
-                <h4 className="font-semibold mb-3">Ou me encontre nas redes sociais</h4>
+                <h4 className="font-semibold mb-3">
+                  <FormattedMessage id="contact.info.findMe" defaultMessage="Ou me encontre nas redes sociais" />
+                </h4>
                 <p className="text-sm text-muted-foreground">
-                  Fique à vontade para me seguir e entrar em contato através das
-                  minhas redes sociais. Estou sempre aberto para discutir novos
-                  projetos e oportunidades de colaboração.
+                  <FormattedMessage id="contact.info.follow" defaultMessage="Fique à vontade para me seguir e entrar em contato através das minhas redes sociais. Estou sempre aberto para discutir novos projetos e oportunidades de colaboração." />
                 </p>
               </div>
             </CardContent>
@@ -219,10 +230,11 @@ export function Contact() {
 
           <Card className="bg-muted">
             <CardContent className="pt-6">
-              <h4 className="font-semibold mb-2">Horário de Resposta</h4>
+              <h4 className="font-semibold mb-2">
+                <FormattedMessage id="contact.info.responseTime.title" defaultMessage="Horário de Resposta" />
+              </h4>
               <p className="text-sm text-muted-foreground">
-                Geralmente respondo dentro de 24-48 horas durante dias úteis.
-                Para questões urgentes, entre em contato através das redes sociais.
+                <FormattedMessage id="contact.info.responseTime.desc" defaultMessage="Geralmente respondo dentro de 24-48 horas durante dias úteis. Para questões urgentes, entre em contato através das redes sociais." />
               </p>
             </CardContent>
           </Card>

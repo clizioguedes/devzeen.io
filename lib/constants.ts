@@ -1,14 +1,9 @@
 import { Project, Experience, Skill, SocialLink, Client } from "./types";
 
 export const siteConfig = {
-  name: "DevZeen",
-  title: "DevZeen - Desenvolvedor Full Stack",
-  description: "Portfolio profissional de desenvolvimento web",
   url: "https://devzeen.io",
   author: {
-    name: "Clizio Guedes",
     email: "clizioguedes@devzeen.io",
-    bio: "Desenvolvedor Full Stack apaixonado por criar experiências digitais incríveis. Especializado em React, Next.js e tecnologias modernas de web development.",
     avatar: "https://avatars.githubusercontent.com/u/8258057?s=400&u=5aa24d91db3997bc4ca0cf9f2ed2cd26930984b9&v=4",
   },
 };
@@ -129,9 +124,9 @@ export const clients: Client[] = [
 ];
 
 export const navLinks = [
-  { name: "Início", href: "hero" },
-  { name: "Projetos", href: "projects" },
-  { name: "Sobre", href: "about" },
-  { name: "Clientes", href: "clients" },
-  { name: "Contato", href: "contact" },
+  { href: "hero" },
+  { href: "projects" },
+  { href: "about" },
+  { href: "clients" },
+  { href: "contact" },
 ];

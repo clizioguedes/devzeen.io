@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
 import { skills } from "@/lib/constants";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function About() {
+  const intl = useIntl();
   const skillsByCategory = {
     frontend: skills.filter((s) => s.category === "frontend"),
     backend: skills.filter((s) => s.category === "backend"),
@@ -25,7 +27,7 @@ export function About() {
         className="space-y-4 mb-8 md:mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Sobre Mim
+          <FormattedMessage id="about.title" defaultMessage="Sobre Mim" />
         </h2>
       </motion.div>
 
@@ -39,17 +41,50 @@ export function About() {
         >
           <div className="space-y-4 text-muted-foreground">
             <p className="text-base leading-relaxed">
-              Formado em <strong className="text-foreground">Sistemas para Internet</strong> pelo IFRN - Campus Currais Novos em <strong className="text-foreground">2019</strong>, 
-              atuo desde 2020 no desenvolvimento de software, tanto em empresas quanto em projetos diretos para clientes.
+              <FormattedMessage
+                id="about.paragraph1"
+                defaultMessage="Formado em {degree} pelo IFRN - Campus Currais Novos em {year}, atuo desde {startYear} no desenvolvimento de software, tanto em empresas quanto em projetos diretos para clientes."
+                values={{
+                  degree: (
+                    <strong className="text-foreground">
+                      {intl.formatMessage({ id: "about.degree" })}
+                    </strong>
+                  ),
+                  year: "2019",
+                  startYear: "2020",
+                }}
+              />
             </p>
             <p className="text-base leading-relaxed">
-              Ao longo de <strong className="text-foreground">mais de 5 anos</strong> de carreira, trabalhei em projetos de <strong className="text-foreground">diversos segmentos</strong>: indústria 
-              marítima, e-commerce, aplicativos mobile, sistemas corporativos e soluções para grandes 
-              multinacionais.
+              <FormattedMessage
+                id="about.paragraph2"
+                defaultMessage="Ao longo de {yearsCareer} de carreira, trabalhei em projetos de {segments}: indústria marítima, e-commerce, aplicativos mobile, sistemas corporativos e soluções para grandes multinacionais."
+                values={{
+                  yearsCareer: (
+                    <strong className="text-foreground">
+                      {intl.formatMessage({ id: "about.yearsCareer" })}
+                    </strong>
+                  ),
+                  segments: (
+                    <strong className="text-foreground">
+                      {intl.formatMessage({ id: "about.segments" })}
+                    </strong>
+                  ),
+                }}
+              />
             </p>
             <p className="text-base leading-relaxed">
-              Com <strong className="text-foreground">mais de 15 projetos entregues</strong>, hoje foco em criar <strong className="text-foreground">produtos escaláveis e de alto impacto</strong>, combinando as melhores 
-              práticas de desenvolvimento com tecnologias modernas.
+              <FormattedMessage
+                id="about.paragraph3"
+                defaultMessage="Com {projectsCount} projetos entregues, hoje foco em criar produtos escaláveis e de alto impacto, combinando as melhores práticas de desenvolvimento com tecnologias modernas."
+                values={{
+                  projectsCount: (
+                    <strong className="text-foreground">
+                      {intl.formatMessage({ id: "about.projectsCount" })}
+                    </strong>
+                  ),
+                }}
+              />
             </p>
           </div>
         </motion.div>
@@ -61,15 +96,18 @@ export function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="text-xl font-bold mb-6">Habilidades Técnicas</h3>
-
-          <div className="space-y-6">
+          <div className="grid gap-4">
             {/* Frontend */}
-            <div className="space-y-3">
-              <h4 className="text-sm font-semibold text-muted-foreground">Frontend</h4>
+            <div className="rounded-xl border border-border/60 bg-card/40 p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-semibold">
+                  <FormattedMessage id="about.category.frontend" defaultMessage="Frontend" />
+                </h4>
+                <span className="text-xs text-muted-foreground">{skillsByCategory.frontend.length}</span>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {skillsByCategory.frontend.map((skill) => (
-                  <Badge key={skill.name} variant="secondary">
+                  <Badge key={skill.name} variant="secondary" className="rounded-md">
                     {skill.name}
                   </Badge>
                 ))}
@@ -77,11 +115,16 @@ export function About() {
             </div>
 
             {/* Backend */}
-            <div className="space-y-3">
-              <h4 className="text-sm font-semibold text-muted-foreground">Backend</h4>
+            <div className="rounded-xl border border-border/60 bg-card/40 p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-semibold">
+                  <FormattedMessage id="about.category.backend" defaultMessage="Backend" />
+                </h4>
+                <span className="text-xs text-muted-foreground">{skillsByCategory.backend.length}</span>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {skillsByCategory.backend.map((skill) => (
-                  <Badge key={skill.name} variant="secondary">
+                  <Badge key={skill.name} variant="secondary" className="rounded-md">
                     {skill.name}
                   </Badge>
                 ))}
@@ -89,11 +132,16 @@ export function About() {
             </div>
 
             {/* Tools */}
-            <div className="space-y-3">
-              <h4 className="text-sm font-semibold text-muted-foreground">Ferramentas</h4>
+            <div className="rounded-xl border border-border/60 bg-card/40 p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-semibold">
+                  <FormattedMessage id="about.category.tools" defaultMessage="Ferramentas" />
+                </h4>
+                <span className="text-xs text-muted-foreground">{skillsByCategory.tools.length}</span>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {skillsByCategory.tools.map((skill) => (
-                  <Badge key={skill.name} variant="secondary">
+                  <Badge key={skill.name} variant="secondary" className="rounded-md">
                     {skill.name}
                   </Badge>
                 ))}

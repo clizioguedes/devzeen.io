@@ -1,21 +1,79 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import * as React from "react";
+import { motion, useAnimationControls, useReducedMotion, type Variants } from "framer-motion";
+import { ArrowRight, Mail } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
 
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { siteConfig, socialLinks } from "@/lib/constants";
+import { FormattedMessage, useIntl } from "react-intl";
+import { GithubIcon } from "@/components/icons/github";
+import { LinkedinIcon } from "@/components/icons/linkedin";
 
 const socialIcons = {
-  github: Github,
-  linkedin: Linkedin,
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
   mail: Mail,
   twitter: Mail, // fallback
 };
 
 export function Hero() {
+  const intl = useIntl();
+  const reduceMotion = useReducedMotion();
+  const floatControls = useAnimationControls();
+
+  React.useEffect(() => {
+    if (!reduceMotion) {
+      floatControls.start("float");
+    }
+  }, [reduceMotion, floatControls]);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 24 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: [0.16, 1, 0.3, 1],
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 16 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.35,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
+  const floatVariants: Variants = {
+    float: {
+      x: [0, 2, 0, -2, 0],
+      y: [0, -3, 0, 3, 0],
+      transition: {
+        duration: 4.5,
+        ease: [0.42, 0, 0.58, 1],
+        repeat: Infinity,
+      },
+    },
+    rest: {
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.35,
+        ease: [0, 0, 0.58, 1],
+      },
+    },
+  };
   return (
     <section
       id="hero"
@@ -24,94 +82,96 @@ export function Hero() {
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         {/* Content */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col gap-4 md:gap-6 order-2 lg:order-1"
+          className="order-2 lg:order-1"
+          variants={floatVariants}
+          animate={reduceMotion ? "rest" : floatControls}
+          onHoverStart={() => !reduceMotion && floatControls.start("rest")}
+          onHoverEnd={() => !reduceMotion && floatControls.start("float")}
         >
-          <div className="space-y-2">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight"
-            >
-              Olá, eu sou{" "}
-              <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                {siteConfig.author.name}
-              </span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl lg:text-2xl text-muted-foreground"
-            >
-              Desenvolvedor Full Stack
-            </motion.p>
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl"
-          >
-            {siteConfig.author.bio}
-          </motion.p>
-
-          {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col gap-4 md:gap-6"
           >
-            <ScrollLink to="projects" smooth={true} offset={-80} duration={500}>
-              <Button size="lg" className="w-full sm:w-auto min-h-11 gap-2">
-                Ver Projetos
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </ScrollLink>
-            <ScrollLink to="contact" smooth={true} offset={-80} duration={500}>
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto min-h-11 gap-2"
+            <div className="space-y-2">
+              <motion.h1
+                variants={itemVariants}
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight"
               >
-                Entre em Contato
-              </Button>
-            </ScrollLink>
-          </motion.div>
+                <FormattedMessage
+                  id="hero.greeting"
+                  defaultMessage={`Olá, eu sou {name}`}
+                  values={{
+                    name: (
+                      <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                        {intl.formatMessage({ id: "author.name" })}
+                      </span>
+                    ),
+                  }}
+                />
+              </motion.h1>
+              <motion.p
+                variants={itemVariants}
+                className="text-lg md:text-xl lg:text-2xl text-muted-foreground"
+              >
+                <FormattedMessage id="hero.subtitle" defaultMessage="Desenvolvedor Full Stack" />
+              </motion.p>
+            </div>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex gap-3"
-          >
-            {socialLinks.map((social) => {
-              const Icon = socialIcons[social.icon as keyof typeof socialIcons];
-              return (
-                <Button
-                  key={social.name}
-                  variant="ghost"
-                  size="icon"
-                  asChild
-                  className="h-11 w-11"
-                  aria-label={social.name}
-                >
-                  <a
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-lg text-muted-foreground max-w-2xl"
+            >
+              {intl.formatMessage({ id: "author.bio" })}
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-3 md:gap-4"
+            >
+              <ScrollLink to="projects" smooth={true} offset={-80} duration={500}>
+                <Button size="lg" className="w-full sm:w-auto min-h-11 gap-2">
+                  <FormattedMessage id="hero.cta.projects" defaultMessage="Ver Projetos" />
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
-              );
-            })}
+              </ScrollLink>
+              <ScrollLink to="contact" smooth={true} offset={-80} duration={500}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto min-h-11 gap-2"
+                >
+                  <FormattedMessage id="hero.cta.contact" defaultMessage="Entre em Contato" />
+                </Button>
+              </ScrollLink>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div variants={itemVariants} className="flex gap-3">
+              {socialLinks.map((social) => {
+                const Icon = socialIcons[social.icon as keyof typeof socialIcons];
+                return (
+                  <Button
+                    key={social.name}
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="h-11 w-11"
+                    aria-label={social.name}
+                  >
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  </Button>
+                );
+              })}
+            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -127,10 +187,10 @@ export function Hero() {
             <Avatar className="h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80 border-4 border-border relative">
               <AvatarImage
                 src={siteConfig.author.avatar}
-                alt={siteConfig.author.name}
+                alt={intl.formatMessage({ id: "author.name" })}
               />
               <AvatarFallback className="text-4xl md:text-5xl lg:text-6xl">
-                {siteConfig.author.name.substring(0, 2).toUpperCase()}
+                {intl.formatMessage({ id: "author.name" }).substring(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
           </div>

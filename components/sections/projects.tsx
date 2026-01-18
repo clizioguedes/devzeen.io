@@ -15,8 +15,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { projects } from "@/lib/constants";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function Projects() {
+  const intl = useIntl();
   return (
     <section
       id="projects"
@@ -30,11 +32,10 @@ export function Projects() {
         className="space-y-4 mb-8 md:mb-12"
       >
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Produtos Desenvolvidos
+          <FormattedMessage id="projects.title" defaultMessage="Produtos Desenvolvidos" />
         </h2>
         <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
-          Projetos próprios e produtos SaaS que desenvolvi utilizando as mais modernas
-          tecnologias web.
+          <FormattedMessage id="projects.description" defaultMessage="Projetos próprios e produtos SaaS que desenvolvi utilizando as mais modernas tecnologias web." />
         </p>
       </motion.div>
 
@@ -57,7 +58,10 @@ export function Projects() {
                 <CardHeader>
                   <CardTitle className="line-clamp-1">{project.title}</CardTitle>
                   <CardDescription className="line-clamp-2">
-                    {project.description}
+                    {intl.formatMessage(
+                      { id: `projects.items.${project.id}.description` },
+                      { defaultMessage: project.description }
+                    )}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1">
@@ -87,13 +91,13 @@ export function Projects() {
                       asChild
                       className="flex-1 min-h-11"
                     >
-                      <a
+                        <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
-                        Demo
+                        {intl.formatMessage({ id: "projects.demo" })}
                       </a>
                     </Button>
                   )}

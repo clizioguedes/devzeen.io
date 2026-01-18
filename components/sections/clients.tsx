@@ -7,8 +7,10 @@ import { ExternalLink } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { clients } from "@/lib/constants";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function Clients() {
+  const intl = useIntl();
   return (
     <section
       id="clients"
@@ -22,11 +24,10 @@ export function Clients() {
         className="space-y-4 mb-8 md:mb-12 text-center"
       >
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-          Clientes & Parceiros
+          <FormattedMessage id="clients.title" defaultMessage="Clientes & Parceiros" />
         </h2>
         <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-          Empresas e organizações que contrataram meus serviços para desenvolver
-          soluções digitais customizadas e de alto impacto.
+          <FormattedMessage id="clients.description" defaultMessage="Empresas e organizações que contrataram meus serviços para desenvolver soluções digitais customizadas e de alto impacto." />
         </p>
       </motion.div>
 
@@ -56,7 +57,10 @@ export function Clients() {
                   </h3>
                   {client.description && (
                     <p className="text-xs md:text-sm text-muted-foreground line-clamp-2">
-                      {client.description}
+                      {intl.formatMessage(
+                        { id: `clients.items.${client.id}.description` },
+                        { defaultMessage: client.description }
+                      )}
                     </p>
                   )}
                   {client.website && (
@@ -66,7 +70,7 @@ export function Clients() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-2"
                     >
-                      Visitar site
+                      {intl.formatMessage({ id: "clients.visitSite" })}
                       <ExternalLink className="h-3 w-3" />
                     </a>
                   )}

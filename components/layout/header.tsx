@@ -14,7 +14,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { navLinks, siteConfig } from "@/lib/constants";
+import { navLinks } from "@/lib/constants";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useLocale } from "@/components/intl-provider";
 
 export function Header() {
   const [mounted, setMounted] = React.useState(false);
@@ -29,12 +31,44 @@ export function Header() {
     setIsOpen(false);
   };
 
+  function LanguageSwitcher() {
+    const { locale, setLocale } = useLocale();
+    return (
+      <div className="flex items-center gap-1">
+        <Button
+          variant={locale === "pt" ? "default" : "ghost"}
+          size="sm"
+          onClick={() => setLocale("pt")}
+          className="h-8 w-8"
+        >
+          PT
+        </Button>
+        <Button
+          variant={locale === "en" ? "default" : "ghost"}
+          size="sm"
+          onClick={() => setLocale("en")}
+          className="h-8 w-8"
+        >
+          EN
+        </Button>
+          <Button
+            variant={locale === "es" ? "default" : "ghost"}
+            size="sm"
+            onClick={() => setLocale("es")}
+            className="h-8 w-8"
+          >
+            ES
+          </Button>
+      </div>
+    );
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex h-14 md:h-16 max-w-screen-2xl items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold text-lg md:text-xl">{siteConfig.name}</span>
+          <span className="font-bold text-lg md:text-xl">{useIntl().formatMessage({ id: "site.name" }) || "DevZeen"}</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -50,7 +84,7 @@ export function Header() {
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               activeClass="text-foreground"
             >
-              {link.name}
+              <FormattedMessage id={`nav.${link.href}`} defaultMessage={link.href} />
             </ScrollLink>
           ))}
         </nav>
@@ -74,6 +108,9 @@ export function Header() {
             </Button>
           )}
 
+          {/* Language Switch */}
+          <LanguageSwitcher />
+
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
@@ -82,8 +119,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[85vw] max-w-sm">
-              <SheetHeader className="mb-8">
-                <SheetTitle className="text-xl font-bold">{siteConfig.name}</SheetTitle>
+                <SheetHeader className="mb-8">
+                <SheetTitle className="text-xl font-bold">{useIntl().formatMessage({ id: "site.name" }) || "DevZeen"}</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (
@@ -98,7 +135,7 @@ export function Header() {
                     className="text-base font-medium text-foreground hover:bg-accent rounded-lg px-4 py-3 transition-colors cursor-pointer"
                     activeClass="bg-accent"
                   >
-                    {link.name}
+                    <FormattedMessage id={`nav.${link.href}`} defaultMessage={link.href} />
                   </ScrollLink>
                 ))}
               </nav>
