@@ -16,22 +16,22 @@ const colorConfig: Record<
   { border: string; glow: string; badge: string; number: string }
 > = {
   primary: {
-    border: "border-t-primary",
+    border: "border-primary/50",
     glow: "bg-primary",
     badge: "border-primary/30 text-primary bg-primary/5",
     number: "text-primary",
   },
   secondary: {
-    border: "border-t-secondary",
+    border: "border-secondary/50",
     glow: "bg-secondary",
     badge: "border-secondary/30 text-secondary bg-secondary/5",
     number: "text-secondary",
   },
   accent: {
-    border: "border-t-accent",
+    border: "border-accent/50",
     glow: "bg-accent",
-    badge: "border-accent/40 text-accent-foreground bg-accent/10",
-    number: "text-accent-foreground",
+    badge: "border-accent/40 text-accent bg-accent/10",
+    number: "text-accent",
   },
 };
 
@@ -88,13 +88,8 @@ export function Projects() {
                 className="group"
               >
                 <div
-                  className={`relative h-full flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border-t-4 ${color.border}`}
+                  className={`relative h-full flex flex-col overflow-hidden rounded-xl border-2 bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${color.border}`}
                 >
-                  {/* Decorative glow blob */}
-                  <div
-                    className={`pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full blur-3xl opacity-20 transition-opacity duration-300 group-hover:opacity-40 ${color.glow}`}
-                  />
-
                   {/* Header */}
                   <div className="relative p-6 pb-4 space-y-3">
                     <span
