@@ -5,7 +5,7 @@ import IntlProviderWrapper from "@/components/intl-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "DevZeen - Desenvolvedor Full Stack Portfolio",
+  title: "DevZeen - Desenvolvedor Full Stack",
   description: "Portfolio profissional de desenvolvimento web com React, Next.js e tecnologias modernas",
 };
 
