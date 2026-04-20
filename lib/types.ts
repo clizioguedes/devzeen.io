@@ -9,7 +9,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
-  borderColor?: string;
+  colorVariant?: "primary" | "secondary" | "accent";
 }
 
 export interface Experience {

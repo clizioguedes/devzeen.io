@@ -14,8 +14,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { navLinks } from "@/lib/constants";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useLocale } from "@/components/intl-provider";
+import { Logo } from "@/components/logo";
 
 export function Header() {
   const [mounted, setMounted] = React.useState(false);
@@ -66,8 +67,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container flex h-14 md:h-16 max-w-screen-2xl items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold text-lg md:text-xl">{useIntl().formatMessage({ id: "site.name" }) || "DevZeen"}</span>
+        <Link href="/" className="flex items-center">
+          <Logo className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -114,7 +115,8 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[85vw] max-w-sm">
                 <SheetHeader className="mb-8">
-                <SheetTitle className="text-xl font-bold">{useIntl().formatMessage({ id: "site.name" }) || "DevZeen"}</SheetTitle>
+                <SheetTitle className="sr-only">DevZeen</SheetTitle>
+                <Logo className="h-10 w-auto" />
               </SheetHeader>
               <nav className="flex flex-col gap-2">
                 {navLinks.map((link) => (

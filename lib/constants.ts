@@ -67,7 +67,7 @@ export const projects: Project[] = [
     category: ["Angular", "Firebase"],
     githubUrl: "https://github.com/clizioguedes",
     featured: true,
-    borderColor: "border-t-red-500",
+    colorVariant: "primary",
   },
   {
     id: "2",
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     category: ["React Native", "Mobile"],
     githubUrl: "https://github.com/clizioguedes",
     featured: true,
-    borderColor: "border-t-green-500",
+    colorVariant: "accent",
   },
   {
     id: "3",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     category: ["Next.js", "TypeScript", "Node.js"],
     githubUrl: "https://github.com/clizioguedes",
     featured: true,
-    borderColor: "border-t-blue-500",
+    colorVariant: "secondary",
   },
 ];
 
